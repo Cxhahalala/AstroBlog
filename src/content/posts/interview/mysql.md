@@ -9,56 +9,56 @@ draft: false
 
 # 如何定位慢查询
 ## 原理
-![](/images/posts/423d9a91feeb515e.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/423d9a91feeb515e.png)
 ## 回答
 注意没有用过skywalking可以不说
 而开启mysql的慢查询日志通常在调试阶段，因为会损耗mysql性能
-![](/images/posts/3d302903509b7522.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3d302903509b7522.png)
 # 如何优化慢索引
 ## 原理
-![](/images/posts/439306f4c950f13d.png)
-![](/images/posts/28b7c798fd0e9111.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/439306f4c950f13d.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/28b7c798fd0e9111.png)
 如果出现useing index condition代表索引使用有优化空间
-![](/images/posts/0d599b4533b49b00.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0d599b4533b49b00.png)
 ## 回答
-![](/images/posts/8068fc962b913fda.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8068fc962b913fda.png)
 # 索引
 ## 什么是索引
-![](/images/posts/c55fb5283e5192bb.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c55fb5283e5192bb.png)
 这里是以二叉搜索树示例
 ## 索引的底层数据结构
-![](/images/posts/c38233161c0489ad.png)
-![](/images/posts/cb3065a33d3b81c3.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c38233161c0489ad.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/cb3065a33d3b81c3.png)
 磁盘读写代价低时因为非叶子节点只是存储指针，在便利的时候不需要每个节点都加载数据
 查询效率稳定，数据都寸在叶子节点上
 便于扫库和区间检查，因为叶子节点也是一个双向链表，不需要再从根节点遍历
 ## 回答
-![](/images/posts/75ac0c6a4c8f2b08.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/75ac0c6a4c8f2b08.png)
 # 聚集索引和非聚集索引
 ## 原理
-![](/images/posts/1599efc907d4ba81.png)
-![](/images/posts/14bdc9af5f45b1a5.png)
-![](/images/posts/586a663447588bc6.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1599efc907d4ba81.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/14bdc9af5f45b1a5.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/586a663447588bc6.png)
 简单来说，先通过二级索引拿到对应的主键，再通过主键获取真正的数据。相当于读了两次表，就叫做回表查询
 ## 回答
-![](/images/posts/3af181fd5d9d2ecf.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3af181fd5d9d2ecf.png)
 面试官可能会问，什么是回表查询，此时就可以先解释什么是聚簇索引和非聚簇索引，然后解释回表查询
 # 覆盖索引
 ## 原理
-![](/images/posts/a4f52732d2e28f95.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a4f52732d2e28f95.png)
 第一个是直接通过主键，是聚簇索引，叶子节点存储全部的数据，不需要回表查询，即覆盖索引
-![](/images/posts/8d75380af2014c21.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8d75380af2014c21.png)
 第二个通过name字段，二级索引叶子节点刚好也存储了主键，刚好要找的是name 和 id，所以也是聚簇索引
-![](/images/posts/55ef1616590e174d.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/55ef1616590e174d.png)
 第三个，索引并没有gender，因此触发回表查询，通过id又要查一次表，所以为非聚簇索引
-![](/images/posts/a4f6c8f2c6657bac.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a4f6c8f2c6657bac.png)
 回表查询性能相对来说较低
 ## 回答
-![](/images/posts/efdc3ce84467d722.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/efdc3ce84467d722.png)
 # 如何处理超大分页
 ## 原理
-![](/images/posts/1f70b8e95203015d.png)
-![](/images/posts/65b1b1f130cd4757.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1f70b8e95203015d.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/65b1b1f130cd4757.png)
 📝 本次对话核心总结：MySQL 深分页原理与优化
 核心认知纠偏
 子查询未消除 Offset：LIMIT 9000000, 10 的子查询写法依然要遍历前 900 万条记录，并没有“跳过”这一步。
@@ -78,14 +78,14 @@ SELECT \* FROM tb_sku WHERE id \> \{last_id\} ORDER BY id LIMIT 10;
 💡 一句话精华
 LIMIT offset 的本质是沿链表逐条“数数”，子查询只是让“数数”时读的数据变小了，而游标分页才是真正把“数数”变成了“跳转”。
 ## 回答
-![](/images/posts/9fe2cd27235e8125.png)
-![](/images/posts/641bb8b893caf986.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/9fe2cd27235e8125.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/641bb8b893caf986.png)
 # 创建索引的原则
-![](/images/posts/bf8f8ff24a55e8ad.png)
-![](/images/posts/9ed0dce64c163ef6.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/bf8f8ff24a55e8ad.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/9ed0dce64c163ef6.png)
 截取一部分作为前缀索引
-![](/images/posts/f47fd73fd4ed253c.png)
-![](/images/posts/26f4df386f7a1b02.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f47fd73fd4ed253c.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/26f4df386f7a1b02.png)
 ## 聚合索引相关
 ```yaml
 CREATE TABLE employees (
@@ -141,84 +141,84 @@ EXPLAIN SELECT department, age, salary FROM employees WHERE department = '技术
 </tr>
 </table>
 ## 回答
-![](/images/posts/678beebc20043ade.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/678beebc20043ade.png)
 # 索引失效
-![](/images/posts/09cd9b4f99b10417.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/09cd9b4f99b10417.png)
 这三个是按照索引顺序来的，所以可以命中索引
-![](/images/posts/7333f449bce17cd9.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7333f449bce17cd9.png)
 第二条跳过了一条，只有最左侧索引生效，所以key_len与只使用name的时候一样
-![](/images/posts/ea2d5a4a01f7cc1e.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ea2d5a4a01f7cc1e.png)
 第二条status使用了范围查询，因此address失效，adress未命中索引
-![](/images/posts/4cb5a7f1829a5c02.png)
-![](/images/posts/dc55920f3209c009.png)
-![](/images/posts/be380695673912e9.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/4cb5a7f1829a5c02.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/dc55920f3209c009.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/be380695673912e9.png)
 ## 回答
-![](/images/posts/47046ca2b37925a0.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/47046ca2b37925a0.png)
 # Sql优化
-![](/images/posts/faa0d243119c4983.png)
-![](/images/posts/d56a28ffe6509110.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/faa0d243119c4983.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d56a28ffe6509110.png)
 小表放外面，比如小表只有10行，大表都100行，那么只需要连接数据库3次，每次操作100次
 如果大表在外面，那么就要连接数据库100次，效率低
-![](/images/posts/8d067b6c9a7198a3.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8d067b6c9a7198a3.png)
 ## 回答
-![](/images/posts/f6c171dc63f8cbda.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f6c171dc63f8cbda.png)
 分库分表一般发生在大的数据量中，后面补充
 # 什么是事务
-![](/images/posts/5ce62eeb02b0a7f0.png)
-![](/images/posts/83d382011e7d7ecf.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5ce62eeb02b0a7f0.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/83d382011e7d7ecf.png)
 ## 回答
-![](/images/posts/14871b20b7904811.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/14871b20b7904811.png)
 # 并发事务问题
 ## 问题
-![](/images/posts/c1489d27093e263b.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c1489d27093e263b.png)
 ##
-![](/images/posts/3ef5a5ae57121764.png)
-![](/images/posts/12a838758f37393d.png)
-![](/images/posts/12b1e2656b0f9d7e.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3ef5a5ae57121764.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/12a838758f37393d.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/12b1e2656b0f9d7e.png)
 解决了不可重复读的问题后，读数据不存在，插入数据又失败，再读还是不存在，就出现了幻读问题
 ## 事务隔离性
-![](/images/posts/3c173decb245b1c3.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3c173decb245b1c3.png)
 ## 回答
-![](/images/posts/90bc94be8374fd7a.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/90bc94be8374fd7a.png)
 # 事务undo log与redo log
-![](/images/posts/9820bac9fe2d6c2a.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/9820bac9fe2d6c2a.png)
 如果数据库宕机了，那么内存数据可能就无法存储到磁盘中
 无法持久化
-![](/images/posts/725d70c831995799.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/725d70c831995799.png)
 当内存数据发生变化立刻写入到硬盘不是也可以吗？原理上可以，但是当发生大量的增删改查，那么就需要进行频繁的磁盘io损耗性能
-![](/images/posts/c04a9512a9aa110e.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c04a9512a9aa110e.png)
 ## 回答
-![](/images/posts/7b08ff4a0c2f51c5.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7b08ff4a0c2f51c5.png)
 # Mvcc
 ## 原理
-![](/images/posts/af86d0cc352843e0.png)
-![](/images/posts/ee76eb4389da50df.png)
-![](/images/posts/a2907378d50f2dfb.png)
-![](/images/posts/071024a445ffdb99.png)
-![](/images/posts/d119874d2ef28ddc.png)
-![](/images/posts/0aadef2ed05c9ebe.png)
-![](/images/posts/78218db11373f8bf.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/af86d0cc352843e0.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ee76eb4389da50df.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a2907378d50f2dfb.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/071024a445ffdb99.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d119874d2ef28ddc.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0aadef2ed05c9ebe.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/78218db11373f8bf.png)
 这个不用记忆
-![](/images/posts/7632e52ed99ef84e.png)
-![](/images/posts/be9b2b814eb847b7.png)
-![](/images/posts/2a42233fe7d035ce.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7632e52ed99ef84e.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/be9b2b814eb847b7.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2a42233fe7d035ce.png)
 ## 回答
-![](/images/posts/3ec0cce032f13ee1.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3ec0cce032f13ee1.png)
 # Mysql主从同步原理
 ## 原理
-![](/images/posts/42ee858eb34be05d.png)
-![](/images/posts/330745b139fc2d8d.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/42ee858eb34be05d.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/330745b139fc2d8d.png)
 ## 回答
-![](/images/posts/befb7c09b40098f9.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/befb7c09b40098f9.png)
 # 分库分表
 ## 原理
-![](/images/posts/365f4a07a68a4266.png)
-![](/images/posts/3300c1efde3ef51f.png)
-![](/images/posts/dfec87c11ab5137e.png)
-![](/images/posts/03bc9b0ef69de4ce.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/365f4a07a68a4266.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3300c1efde3ef51f.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/dfec87c11ab5137e.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/03bc9b0ef69de4ce.png)
 垂直分表不一定会把一个表分到两个数据库中
-![](/images/posts/13c1e936eca1ec2d.png)
-![](/images/posts/2513da2d0d927494.png)
-![](/images/posts/a5f9f55b81fbb903.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/13c1e936eca1ec2d.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2513da2d0d927494.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a5f9f55b81fbb903.png)
 ## 回答
-![](/images/posts/1577f0e51591355c.png)
+![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1577f0e51591355c.png)
