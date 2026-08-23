@@ -108,18 +108,18 @@ Spring 中的事务本质上是通过 AOP 和代理模式实现的。通常我�
 # Spring中事务失效的场景有哪些？
 在项目中，我遇到过几种导致事务失效的场景：
 1. 如果方法内部捕获并处理了异常，没有将异常抛出，会导致事务失效。因此，处理异常后应该确保异常能够被抛出。
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773924725900-2911de0a-f541-4933-abe1-6fb87d4426b6.png)
+![](/images/posts/6522fed14e2e8005.png)
 1. 如果方法抛出检查型异常（checked exception），并且没有在`@Transactional`注解上配置`rollbackFor`属性为`Exception`，那么异常发生时事务可能不会回滚。
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773924598488-79f1d406-78ad-40a9-a883-a9f490ee3967.png?x-oss-process=image%2Fformat%2Cwebp)
+![](/images/posts/e5f39b0e41086a35.png)
 1. 如果事务注解的方法不是公开（public）修饰的，也可能导致事务失效。
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773924620750-03ace6d8-3991-45fb-b906-fddf60f16da4.png?x-oss-process=image%2Fformat%2Cwebp)
+![](/images/posts/260caf5551b7eedb.png)
 **理解：**
 Spring 事务失效常见有三种情况：一是**异常被自己捕获了**，Spring 感知不到异常，就不会回滚；二是**抛出的是检查异常**，Spring 默认只对运行时异常回滚，所以要通过 `rollbackFor=Exception.class` 指定；三是**加了事务的方法不是 public**，因为 Spring 事务底层是 AOP 代理，非 public 方法可能不会被代理到，导致事务失效。
 **背诵版本：**
 Spring 事务失效常见场景主要有三种。第一，方法内部把异常自己捕获并处理了，没有继续抛出，这样 Spring 就感知不到异常，事务不会回滚。第二，抛出的是检查异常，Spring 默认只对运行时异常回滚，所以一般需要通过 `rollbackFor=Exception.class` 来指定回滚。第三，事务方法不是 public 的，由于 Spring 事务是基于 AOP 代理实现的，非 public 方法可能不会被代理，从而导致事务失效。
 # Spring的bean的生命周期？
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773925149270-a3115b88-2733-40c1-ae18-b76460eb5102.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773925108799-d77b3ae5-65f6-4f64-996d-bdef43e22cf4.png)
+![](/images/posts/b68658ba72d828a3.png)
+![](/images/posts/cd48cbe54d37fb65.png)
 Spring中bean的生命周期包括以下步骤：
 1. 通过BeanDefinition获取bean的定义信息。
 2. 调用构造函数实例化bean。
@@ -135,20 +135,20 @@ Spring中bean的生命周期包括以下步骤：
 3. 二级缓存：缓存尚未完成生命周期的早期bean对象。
 4. 三级缓存：缓存ObjectFactory，用于创建bean对象。
 # 解决循环引用的流程
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773925914995-80f6911a-8e4d-454c-82f4-b8e0ee4ad00a.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773925992155-29a3a54c-b37b-4c54-9192-92069d11e914.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773926093246-e07334cd-fa49-4a6e-b40c-a127c63c45a0.png)
+![](/images/posts/b1444a7b7c3510cb.png)
+![](/images/posts/a3b0d163c74de219.png)
+![](/images/posts/aeb683ed0b9c9aff.png)
 一级缓存无法解决循环依赖问题
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773926151342-124740da-05ea-4a55-8ba6-d404faf4519e.png)
+![](/images/posts/8ce37b5e03388218.png)
 一级缓存和二级缓存一起工作
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773926229286-532a449e-d24c-48af-bc40-aafdf3166008.png)
+![](/images/posts/da4bba34b1d93f96.png)
 但一级缓存和二级缓存一起工作也无法完全解决循环依赖问题
 假设A实际上是一个代理对象，根据Bean的生命周期，正常情况下是在初始化对象之后产生的，那么此时二级缓存中不是代理对象，B中注入的可能是原始对象A，就会导致有一个代理对象A和一个原始对象A
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773926316372-0a09d1f8-0bc6-4621-ac6e-1f159fce11e5.png)
+![](/images/posts/efc4007f9a055d5e.png)
 三级缓存解决循环依赖问题
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773926429297-fbdee02d-9c15-4447-8b5e-40bda1fb11d7.png)
+![](/images/posts/9dfa53624251f37f.png)
 需要自己解决的循环依赖
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773926515184-dd2ea742-3a0c-41a4-a218-8d3581bd7f0f.png)
+![](/images/posts/9a2c829012b0f7d0.png)
 **理解：**
 Spring 用三级缓存解决循环依赖，核心是为了在 Bean 还没完全初始化完成时，能够**提前暴露一个可用的对象引用**。
 一级缓存放的是完成初始化的单例 Bean，二级缓存放的是提前暴露的 Bean，三级缓存放的是生成早期 Bean 的工厂 `ObjectFactory`。
@@ -163,12 +163,12 @@ Spring 解决循环依赖主要依赖三级缓存机制。一级缓存存放的�
 **背诵版本：**
 构造方法出现循环依赖时，Spring 一般无法直接解决。因为构造器注入是在 Bean 实例化最开始执行的，创建 A 时就必须先得到 B，创建 B 时又必须先得到 A，而这时两个 Bean 都还没有完成实例化，所以 Spring 无法通过提前暴露对象来处理。三级缓存解决的是属性注入场景下的循环依赖，不能解决构造器循环依赖。常见的解决方式是改用 setter 或 `@Autowired` 属性注入，或者在其中一个依赖上加 `@Lazy`，通过延迟加载来打破循环依赖。
 # SpringMvc的执行流程
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773928799238-a793b7ca-8f8d-4f1e-b86d-873b18c2a7be.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773928857562-17d273b7-5f18-41a0-a98a-99490f32634c.png)
+![](/images/posts/4f498fc829847a2c.png)
+![](/images/posts/97b85584ad891dcb.png)
 背诵
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773928963208-b594da88-3f1e-43e0-8311-4228ee2b8c0b.png)
+![](/images/posts/c6688e1acec9b1b5.png)
 #
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773929003229-e0128f19-3ece-489e-bcbb-c14a11871941.png)
+![](/images/posts/22971d112cf88394.png)
 # 介绍SpringBoot<br>这题很典型，面试官其实在考你三层：
 1. **你知不知道 SpringBoot 是干嘛的**
 2. **你能不能说出它相比 Spring 的核心优势**
@@ -270,8 +270,8 @@ SpringBoot 常见方式是：
 - **快速开发和部署**
 ---
 # SpringBoot自动配置原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773929120968-64bec268-6efb-49ec-bf43-4001e27ca43e.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773929355168-b855a234-c728-4b9c-abd0-0364342c3d3c.png)
+![](/images/posts/ff28e3c3a87b1ee6.png)
+![](/images/posts/6c2f1af68e1d513d.png)
 Spring Boot的自动配置原理基于`@SpringBootApplication`注解，它封装了`@SpringBootConfiguration`、`@EnableAutoConfiguration`和`@ComponentScan`。`@EnableAutoConfiguration`是核心，它通过`@Import`导入配置选择器，读取`META-INF/spring.factories`文件中的类名，根据条件注解决定是否将配置类中的Bean导入到Spring容器中。
 # SpringBoot启动原理
 ### 理解版
@@ -362,14 +362,14 @@ Spring Boot 的启动入口一般是 `SpringApplication.run()`。
 如果当前是 Web 项目，那么在容器刷新过程中还会启动内嵌的 Tomcat 服务器，最终让应用对外提供服务。
 所以我对 Spring Boot 启动过程的理解是：**从 **`run()`\*\* 开始，依次完成环境准备、容器创建、容器刷新、自动配置以及 Web 服务器启动。\*\*
 # Spring常见注解Spring的常见注解包括：
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773933184323-6c924599-34cd-4ea5-83a3-11b98b2e58aa.png)
+![](/images/posts/76a4e5cc703217b8.png)
 1. 声明Bean的注解：@Component、@Service、@Repository、@Controller。
 2. 依赖注入相关注解：@Autowired、@Qualifier、@Resource。
 3. 设置作用域的注解：@Scope。
 4. 配置相关注解：@Configuration、@ComponentScan、@Bean。
 5. AOP相关注解：@Aspect、@Before、@After、@Around、@Pointcut。
 # SpringMvc常见注解
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773933254204-336891c1-9971-438b-a5d3-1ecb0cb90eba.png)
+![](/images/posts/6aceb218d894e255.png)
 SpringMVC的常见注解有：
 - @RequestMapping：映射请求路径。
 - @RequestBody：接收HTTP请求的JSON数据。
@@ -379,13 +379,13 @@ SpringMVC的常见注解有：
 - @RequestHeader：获取请求头数据。
 - @PostMapping、@GetMapping等。
 # SpringBoot常见注解
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773933288251-4fc0d3cf-dd66-47ac-8254-43f9c4cbfc57.png)
+![](/images/posts/d88d4ae0e02c512a.png)
 Spring Boot的常见注解包括：
 - @SpringBootApplication：[由@SpringBootConfiguration](mailto:%E7%94%B1@SpringBootConfiguration)、@EnableAutoConfiguration和@ComponentScan组成。
 - [其他注解如@RestController](mailto:%E5%85%B6%E4%BB%96%E6%B3%A8%E8%A7%A3%E5%A6%82@RestController)、@GetMapping、@PostMapping等，用于简化Spring MVC的配置。
 -
 # MyBatis执行流程
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773933638576-7481dd4e-7dd0-45e1-b07d-743c26625195.png)
+![](/images/posts/7286bbce618b36c9.png)
 MyBatis的执行流程如下：
 1. 读取MyBatis配置文件mybatis-config.xml。
 2. 构造会话工厂SqlSessionFactory。
@@ -395,7 +395,7 @@ MyBatis的执行流程如下：
 6. 输入参数映射。
 7. 输出结果映射。
 # MyBatis是否支持延迟加载
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773933825492-65e8a2a2-ec20-45a3-b26a-ec6ece76af77.png)
+![](/images/posts/8d53230e02f6b30b.png)
 ### 简单理解
 MyBatis 的延迟加载，就是对关联查询的数据 **按需加载**。
 在执行主查询时，先只查主对象数据，关联对象的数据不立即查询，等真正访问关联属性时再发送 SQL。
@@ -408,7 +408,7 @@ MyBatis 的延迟加载，就是对关联查询的数据 **按需加载**。
 - 当代码真正调用 `user.getOrders()` 时，才去查订单
 MyBatis支持延迟加载，即在需要用到数据时才加载。可以通过配置文件中的`lazyLoadingEnabled`配置启用或禁用延迟加载。
 # 延迟加载的底层原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773934097234-2a68e4f8-cce8-4a51-acc4-a34eafee0ba8.png)
+![](/images/posts/d229756dc8fc9f25.png)
 延迟加载的底层原理主要使用CGLIB动态代理实现：
 1. 使用CGLIB创建目标对象的代理对象。
 2. 调用目标方法时，如果发现是null值，则执行SQL查询。
@@ -421,13 +421,13 @@ MyBatis支持延迟加载，即在需要用到数据时才加载。可以通过�
 所以它的核心思想就是：**按需加载，避免不必要的关联查询。**
 ---
 # MyBatis一级缓存和二级缓存
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773934595499-782598c2-f29f-40f8-93fa-1178917b0316.png)
+![](/images/posts/65422c0656145b96.png)
 ## 一级缓存
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773934686896-5d5f5f19-692c-4686-95ca-e85ea08f247f.png)
+![](/images/posts/cc9a149c81c9cf9b.png)
 userMapper1和userMapper2是使用的一个SqlSession
 ## 二级缓存
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773934900291-7d5cb24a-0ec2-479a-9721-27bc1373a967.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1773935005570-ceea66fc-21fe-431b-a057-18b59227ad13.png)
+![](/images/posts/a11e64c14babb98e.png)
+![](/images/posts/c5c11882996d8024.png)
 ## 答案版本
 MyBatis的一级缓存是基于`Perpetual\`\`Cache`的HashMap本地缓存，作用域为Session，默认开启。二级缓存需要单独开启，作用域为Namespace或mapper，默认也是采用`PerpetualCache`，HashMap存储。
 # Mybatis的二级缓存什么时候会清理缓存中的数据？

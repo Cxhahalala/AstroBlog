@@ -9,56 +9,56 @@ draft: false
 
 # 如何定位慢查询
 ## 原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783833094027-ac054202-4271-4347-8548-e754cbfa72f5.png)
+![](/images/posts/423d9a91feeb515e.png)
 ## 回答
 注意没有用过skywalking可以不说
 而开启mysql的慢查询日志通常在调试阶段，因为会损耗mysql性能
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783833159668-1a86c170-e8e1-49d9-bfa0-0b0401b2d138.png)
+![](/images/posts/3d302903509b7522.png)
 # 如何优化慢索引
 ## 原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783833672300-13ae4eff-f8e2-4ae2-8742-dca7ce9fab54.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783833810617-2ee03061-6aed-45d8-b9b8-4570a179460a.png)
+![](/images/posts/439306f4c950f13d.png)
+![](/images/posts/28b7c798fd0e9111.png)
 如果出现useing index condition代表索引使用有优化空间
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783833939720-e7373134-5a14-4ae7-8c9a-cfcd4021ac43.png)
+![](/images/posts/0d599b4533b49b00.png)
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783834012561-6594739c-20c1-4bc6-b9e4-1a50ca860915.png)
+![](/images/posts/8068fc962b913fda.png)
 # 索引
 ## 什么是索引
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783834207308-c8b68b4b-b234-499c-ac8f-e33a545f6a33.png)
+![](/images/posts/c55fb5283e5192bb.png)
 这里是以二叉搜索树示例
 ## 索引的底层数据结构
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783836515561-910176a1-91cf-4446-a8f4-f33f0c2722e5.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783836162149-dc495ed7-521f-4245-a2f5-882a66b00318.png)
+![](/images/posts/c38233161c0489ad.png)
+![](/images/posts/cb3065a33d3b81c3.png)
 磁盘读写代价低时因为非叶子节点只是存储指针，在便利的时候不需要每个节点都加载数据
 查询效率稳定，数据都寸在叶子节点上
 便于扫库和区间检查，因为叶子节点也是一个双向链表，不需要再从根节点遍历
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783836261565-c58b2075-723f-4362-bb5a-6c7e879a8aa6.png)
+![](/images/posts/75ac0c6a4c8f2b08.png)
 # 聚集索引和非聚集索引
 ## 原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783843684309-33ba2b07-7f73-4c97-acc4-47ad11ffcb03.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783843778662-00a4f7af-532f-4323-bf67-151ca310e2ef.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783843890230-75d84dcf-0e18-4f24-b3e2-e37502b8cdd5.png)
+![](/images/posts/1599efc907d4ba81.png)
+![](/images/posts/14bdc9af5f45b1a5.png)
+![](/images/posts/586a663447588bc6.png)
 简单来说，先通过二级索引拿到对应的主键，再通过主键获取真正的数据。相当于读了两次表，就叫做回表查询
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783844040181-98fa1602-3bc9-45c0-ac05-925b5f2821e9.png)
+![](/images/posts/3af181fd5d9d2ecf.png)
 面试官可能会问，什么是回表查询，此时就可以先解释什么是聚簇索引和非聚簇索引，然后解释回表查询
 # 覆盖索引
 ## 原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783844348113-bbfda965-5f35-45cc-99ab-c6661a89b438.png)
+![](/images/posts/a4f52732d2e28f95.png)
 第一个是直接通过主键，是聚簇索引，叶子节点存储全部的数据，不需要回表查询，即覆盖索引
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783844650026-7b9a4c4a-53f5-447f-807e-778fb3c396bb.png)
+![](/images/posts/8d75380af2014c21.png)
 第二个通过name字段，二级索引叶子节点刚好也存储了主键，刚好要找的是name 和 id，所以也是聚簇索引
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783844628862-c05d3bb7-b4f0-4a08-8b2c-eeec853ef165.png)
+![](/images/posts/55ef1616590e174d.png)
 第三个，索引并没有gender，因此触发回表查询，通过id又要查一次表，所以为非聚簇索引
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783844700762-927f32fb-a745-4fcf-ba2b-53f0e468e59a.png)
+![](/images/posts/a4f6c8f2c6657bac.png)
 回表查询性能相对来说较低
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783844834189-bd83c55a-fe39-4fe3-9cf5-4476980104d7.png)
+![](/images/posts/efdc3ce84467d722.png)
 # 如何处理超大分页
 ## 原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783844935226-e4f5b01b-8d3d-4974-aed8-7c3f96b5e457.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783845086269-b7bbe83e-db56-4366-9709-79c92cd95900.png)
+![](/images/posts/1f70b8e95203015d.png)
+![](/images/posts/65b1b1f130cd4757.png)
 📝 本次对话核心总结：MySQL 深分页原理与优化
 核心认知纠偏
 子查询未消除 Offset：LIMIT 9000000, 10 的子查询写法依然要遍历前 900 万条记录，并没有“跳过”这一步。
@@ -78,14 +78,14 @@ SELECT \* FROM tb_sku WHERE id \> \{last_id\} ORDER BY id LIMIT 10;
 💡 一句话精华
 LIMIT offset 的本质是沿链表逐条“数数”，子查询只是让“数数”时读的数据变小了，而游标分页才是真正把“数数”变成了“跳转”。
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783845143356-de3bd8dd-6946-400c-aef1-65d6ee5c82cd.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783845187432-b3b187fc-2765-473b-b7d7-93b2c794f7c1.png)
+![](/images/posts/9fe2cd27235e8125.png)
+![](/images/posts/641bb8b893caf986.png)
 # 创建索引的原则
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783846478724-9507bad2-c3ef-4268-a0af-56bc601a074e.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783846517653-cb6b3937-ffb3-4c54-943d-3e8eec62d401.png)
+![](/images/posts/bf8f8ff24a55e8ad.png)
+![](/images/posts/9ed0dce64c163ef6.png)
 截取一部分作为前缀索引
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783846612734-78c83dd0-aa2d-4cb4-9b12-d0c82dc44001.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783846659292-e3119c1a-74b5-4b24-be0b-3c41cfb2229b.png)
+![](/images/posts/f47fd73fd4ed253c.png)
+![](/images/posts/26f4df386f7a1b02.png)
 ## 聚合索引相关
 ```yaml
 CREATE TABLE employees (
@@ -141,84 +141,84 @@ EXPLAIN SELECT department, age, salary FROM employees WHERE department = '技术
 </tr>
 </table>
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783846707103-c3b3ec73-85b5-49aa-b3ce-f663455da100.png)
+![](/images/posts/678beebc20043ade.png)
 # 索引失效
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783847314771-5677ed9d-c7ef-4031-9828-3db032c1529a.png)
+![](/images/posts/09cd9b4f99b10417.png)
 这三个是按照索引顺序来的，所以可以命中索引
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783847417289-58a33a52-7286-4ed3-8a96-e6c65639ac48.png)
+![](/images/posts/7333f449bce17cd9.png)
 第二条跳过了一条，只有最左侧索引生效，所以key_len与只使用name的时候一样
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783847525912-b226c5e4-656a-4e56-a437-847560402a91.png)
+![](/images/posts/ea2d5a4a01f7cc1e.png)
 第二条status使用了范围查询，因此address失效，adress未命中索引
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783847632118-d6caf2b0-6261-4f30-b455-11693617482f.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783847692898-263652d4-a50a-48dd-94b4-161e3c4041a3.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783847738762-1697f0c5-0c8a-479c-b345-a704457ecc4d.png)
+![](/images/posts/4cb5a7f1829a5c02.png)
+![](/images/posts/dc55920f3209c009.png)
+![](/images/posts/be380695673912e9.png)
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783847826215-c2b4fb33-18a3-4a75-845c-ed05c10d2632.png)
+![](/images/posts/47046ca2b37925a0.png)
 # Sql优化
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848015582-e73db08b-c057-480d-96be-968db656b7bc.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848152115-e302eab2-692c-4396-88c5-5285504713fa.png)
+![](/images/posts/faa0d243119c4983.png)
+![](/images/posts/d56a28ffe6509110.png)
 小表放外面，比如小表只有10行，大表都100行，那么只需要连接数据库3次，每次操作100次
 如果大表在外面，那么就要连接数据库100次，效率低
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848314183-89c0c1ee-f9f9-4fed-98c9-216a83fd51a0.png)
+![](/images/posts/8d067b6c9a7198a3.png)
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848385278-3d5f7e24-331c-45bc-a2bc-f3793fd0352a.png)
+![](/images/posts/f6c171dc63f8cbda.png)
 分库分表一般发生在大的数据量中，后面补充
 # 什么是事务
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848519468-b2048028-b1e0-4c19-be7c-04e6c2243b3d.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848582554-46107b5a-33a9-41a6-b58c-b5d357947876.png)
+![](/images/posts/5ce62eeb02b0a7f0.png)
+![](/images/posts/83d382011e7d7ecf.png)
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848609115-d96efa69-3997-4555-8e52-f982a5212fe8.png)
+![](/images/posts/14871b20b7904811.png)
 # 并发事务问题
 ## 问题
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848674012-a273eeed-3ebd-4b2a-870c-cb1b7ff35405.png)
+![](/images/posts/c1489d27093e263b.png)
 ##
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848843707-1a3251ce-c7a1-4e7f-8279-d09183035787.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783848951533-03db5421-1f9b-4af6-acc1-9f45d6bb5d1b.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783849087697-df1e7603-d6d2-43b6-a6b6-c956fcff8cc4.png)
+![](/images/posts/3ef5a5ae57121764.png)
+![](/images/posts/12a838758f37393d.png)
+![](/images/posts/12b1e2656b0f9d7e.png)
 解决了不可重复读的问题后，读数据不存在，插入数据又失败，再读还是不存在，就出现了幻读问题
 ## 事务隔离性
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783849355676-8c48faa0-d6a0-4826-969c-cf2be30b7ae6.png)
+![](/images/posts/3c173decb245b1c3.png)
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783849511712-e7886d0b-7476-467c-9840-0806a266057b.png)
+![](/images/posts/90bc94be8374fd7a.png)
 # 事务undo log与redo log
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783851272883-7c867651-6b03-4090-9ad6-a052da746d8e.png)
+![](/images/posts/9820bac9fe2d6c2a.png)
 如果数据库宕机了，那么内存数据可能就无法存储到磁盘中
 无法持久化
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783851462332-5a1d027b-1814-4811-8e07-29fd0908d948.png)
+![](/images/posts/725d70c831995799.png)
 当内存数据发生变化立刻写入到硬盘不是也可以吗？原理上可以，但是当发生大量的增删改查，那么就需要进行频繁的磁盘io损耗性能
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783851638246-5ab168ad-2a4f-4cef-8a53-59cb68d83ec5.png)
+![](/images/posts/c04a9512a9aa110e.png)
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783851679975-b59b1a70-2909-491e-bfc7-d6ec226c6e4b.png)
+![](/images/posts/7b08ff4a0c2f51c5.png)
 # Mvcc
 ## 原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783851881091-11620040-1dca-4777-9cc6-6b5e816c4dbd.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783851985670-dbf3ec20-4da2-4732-88da-116b396de681.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783852062049-e4cb9c27-fa7a-4bff-98c9-1e1d99e57d2d.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783852296057-a5b7a0e9-4f9e-48c2-a773-4e31de72bc28.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783852473566-f90ba17a-0708-4027-b937-c1d7590b1af4.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783852555680-fa090f62-fa05-4631-9517-28e48506a170.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783852667299-4c00a97d-4c77-4327-9f9b-46ca54225f99.png)
+![](/images/posts/af86d0cc352843e0.png)
+![](/images/posts/ee76eb4389da50df.png)
+![](/images/posts/a2907378d50f2dfb.png)
+![](/images/posts/071024a445ffdb99.png)
+![](/images/posts/d119874d2ef28ddc.png)
+![](/images/posts/0aadef2ed05c9ebe.png)
+![](/images/posts/78218db11373f8bf.png)
 这个不用记忆
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783852743585-33d10958-b113-4ddb-a736-d05da0619aa6.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783852893737-8c5c8939-2de5-4d3f-a4ee-f628830b3145.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783852944645-c7a58293-cba1-4449-81e3-50371e6b98ca.png)
+![](/images/posts/7632e52ed99ef84e.png)
+![](/images/posts/be9b2b814eb847b7.png)
+![](/images/posts/2a42233fe7d035ce.png)
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783853154083-b35e9702-40c0-4a6a-a382-3e6e0bc1e5f3.png)
+![](/images/posts/3ec0cce032f13ee1.png)
 # Mysql主从同步原理
 ## 原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783853282712-c4854a3f-343a-40fe-be52-e75fe4baa374.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783853385724-1a476e15-35f0-4864-be9f-c6c976d6df98.png)
+![](/images/posts/42ee858eb34be05d.png)
+![](/images/posts/330745b139fc2d8d.png)
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783853443117-5a4cab50-4858-4867-8363-dd459be1939a.png)
+![](/images/posts/befb7c09b40098f9.png)
 # 分库分表
 ## 原理
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783853589107-13058ba6-e819-4e41-a90e-4a28ab973290.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783853635051-68aea444-63db-4504-9bfa-8aba070ca3ee.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783853732749-fd9d2805-296c-4366-9d4a-ca33fb1ee66c.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783853857424-099b6f25-6c67-4406-bc04-2bdab4556338.png)
+![](/images/posts/365f4a07a68a4266.png)
+![](/images/posts/3300c1efde3ef51f.png)
+![](/images/posts/dfec87c11ab5137e.png)
+![](/images/posts/03bc9b0ef69de4ce.png)
 垂直分表不一定会把一个表分到两个数据库中
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783853998904-a735ba0c-b000-4e4f-a6fe-a19945d43b15.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783854073590-38027fdd-32b0-4059-9756-dbbae3ccd785.png)
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783854178550-5ef66c76-d11d-4d21-b55b-36a8499b0685.png)
+![](/images/posts/13c1e936eca1ec2d.png)
+![](/images/posts/2513da2d0d927494.png)
+![](/images/posts/a5f9f55b81fbb903.png)
 ## 回答
-![](https://cdn.nlark.com/yuque/0/2026/png/32814455/1783854301881-d0bd659c-9a9a-4f43-933f-9ff12c5d5a48.png)
+![](/images/posts/1577f0e51591355c.png)
