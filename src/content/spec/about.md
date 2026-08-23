@@ -1,4 +1,16 @@
 
+# 关于我
+
+欢迎来到我的个人博客！
+
+这里主要记录我的后端技术学习、并发编程、中间件实战与算法题解等技术沉淀。
+
+- 💻 **技术领域**：Java / JUC、Redis、RabbitMQ、分布式架构、算法与数据结构
+- 📧 **联系方式**：tommorrow_better@163.com
+- 🐱 **GitHub**：[https://github.com/Cxhahalala](https://github.com/Cxhahalala)
+
+---
+
 This website is built with the **Astro** framework using the [Mizuki](https://github.com/LyraVoid/Mizuki) theme.
 
 ::github{repo="LyraVoid/Mizuki"}
