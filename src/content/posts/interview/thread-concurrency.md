@@ -19,50 +19,74 @@ draft: false
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7bbb44a36ade9c30.png)
 ## 并行与并发
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3d9a947b1e2077a7.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c1344f7017e32758.png)
 ##
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f9fa34bd0871dc29.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/cf9790d3b04681b0.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/30fdc3975088a485.png)
 线程创建的方式
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7bfc7f079bbfaa0d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/9df6dbb1422a430f.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0646e626a41ad004.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/783dd56a7b8af196.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/af6908f8f491d8c4.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1eb705b1d2f68b7e.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/e896f8e90c6c54ca.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/e47bda17585c1771.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/636578071a42f001.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/da6500aa2c8a5e62.png)
 **直接调用run方法就是调用普通方法**
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/64cd8332c4603691.png)
 ## 线程的状态
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f63e117d0bbf9f01.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2cdf227d0d00b918.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/07ebfc132c9b530e.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/350d083ddfc5a5ea.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3c5eefd2c5570ec6.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/bfc89d626dcd46ff.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/70000c2ff2671e56.png)
 ## 线程的执行顺序
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ce800268ad614059.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/15ad4bfe3c8f5c46.png)
 ## notify和notifyall有什么区别
 ##
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/55e03cf453bd017b.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7e4f566544cb02ac.png)
 wait和sleep方法的不同
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d807025ccb1f099a.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c199df386f19430b.png)
 **sleep的时候不会释放锁，sleep完成后会释放锁**
 ## 如何停止正在运行的线程
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f97fada6b051f47d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f4445971fa7683ca.png)
 # 线程并发安全
 ## Synchronized关键字的底层原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f975cc30761fd3b1.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d1ade1215a84bc43.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/4a2f6d94b910b339.png)
 
 > 两次解锁，隐式的try catch结构，防止第一次解锁失败
@@ -76,12 +100,15 @@ wait和sleep方法的不同
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/51506db605584eab.png)
 ### 重量级锁
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/72e7cd599bf61d94.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8898d14ddcd9ea04.png)
 > 主要介绍MarkWord
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/57b19c78ad108e98.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b388698a995b6e5d.png)
 ### 轻量级锁
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/625e13a80d37384c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0dcf6284efadda3b.png)
 
 > lockrecord 交换 hashcode age 交换成功，对象头就记录了锁对象的地址
@@ -92,6 +119,7 @@ wait和sleep方法的不同
 > 解锁再交换回来，不过第二个 lock record是null，就把这个记录删掉。然后交换，markword又变成无锁状态
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/49bcbe12f36fab0b.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/bfd8dd1dcc6f2748.png)
 ### 轻量级锁与重量级锁的区别
 这里的关键不是“有几个线程使用这把锁”，而是“是否有线程在另一个线程持锁期间同时来竞争”。
@@ -112,30 +140,44 @@ T3：          尝试加锁 → 等待
 > 注意：CAS 失败不等于任何情况下都立刻升级为重量级锁。教材中的锁升级流程是经典 HotSpot 模型的简化描述，实际是否自旋、何时膨胀与 JDK/JVM 版本有关。
 ### 偏向锁
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/fe3de5f005a3572b.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/44bab970d3e88aff.png)
 
 > 写入线程Id，并将偏向锁标志改为1
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8e3802bba4118f08.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/47b7fcce60652dcc.png)
 ## JMM（Java内存模型）
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2173219b94136679.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6960a3d24b2e649e.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a1d3ccbe7c7a7649.png)
 
 > 例如主内存有int a =10,线程A和线程B都拿到了，A将a修改为9，则先同步到主内存中，线程B再从主内存更新到线程B
 
 ## 什么是CAS
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0436b7d518e0d661.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ecf21b0059f2a880.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3dea62f24fce8ba4.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/714a26456f272f01.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/945c711d36a37f0c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a80754e4d36309f5.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c9c1d0cd155fcaf4.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/60d2a8aa01a38976.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/141dd6c31997a5e4.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6442df27db80f22f.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c35a0e0ad6858dfe.png)
 ## volatile的理解
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/24c7cd83908a764f.png)
@@ -144,12 +186,14 @@ T3：          尝试加锁 → 等待
 > `stop` 最初为 `false`，随后启动三个线程。三个线程之间没有固定的执行顺序：如果 t2 在线程 t1 休眠期间读取 `stop`，会读到 `false`；如果 t1 醒来并将 `stop` 改为 `true` 后，t2 才读取，才可能读到 `true`。没有使用 `volatile` 时，即使 t2 读到了 `true`，也不代表 t3 一定能看到更新，t3 仍可能一直使用旧值而陷入死循环。加上 `volatile` 后，t3 才能可靠地读取到 `stop` 的最新值并退出循环。
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/192c6b7c3f8c4fbf.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0be0470a6ab39d90.png)
 > 使用valotile后，t3正常获取stop的值，但要注意的是，线程执行顺序没有先后之分，若想指定线程执行顺序需要加入相关参数,t1.start,t2.start,t3.start只是依次发出了启动请求，实际顺序由jvm和操作系统调度
 ### 禁止指令的重排序
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b0c0169eccaaf075.png)
 > 情况四中，actor1先执行第二行代码，代码是跳着执行的，发生了指令重排序
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/decf53d57107ecd4.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7f34f0c68ca5f784.png)
 > 在x上加入volatile是没有用的，写操作只能防止上方的其他写越过屏障，但无法阻止下方写越过屏障，依然有可能存在先写y再些x，得到1，0的结果
 > 那在x,y上都加入volatile，也是可以解决问题的，但是指令重排序对cpu来说是一种优化，可以和减低cpu的运行压力，所以都加上会增加性能
@@ -208,7 +252,9 @@ t2.start();
 所以，想控制顺序，就使用 `join()`、`CountDownLatch`、`CyclicBarrier` 或 `CompletableFuture` 等同步机制。你笔记中说三个线程没有固定执行顺序，是正确的。[\[1\]](https://app.notion.com/p/3bc841c1a5f08032a2b5c745a5e2a000)
 ## 什么是AQS
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/80e6b5d86d3a950d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1e3ac927d093703f.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/15fc61c3a8d9be45.png)
 > 释放锁后，则给队列中的head元素持有锁
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d7334f1ab28cd7fd.png)
@@ -224,18 +270,24 @@ t2.start();
 ```
 CAS 的意思是：如果当前值还是 `UNLOCKED`，就把它改成我的 `LockRecord`；否则失败。
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/da8c8fbc79583340.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8172ee865f890747.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ab930557c815ebce.png)
 ## ReentrantLocak实现原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3143ddf1ae85b6c6.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/4946c3754b11807f.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/914b94eb9a6f659a.png)
 > Sync是非公平锁和公平锁的父类
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/66b0c52b573b7c29.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a5b534729bab1237.png)
 ## synchronized和Lock锁的区别
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/e521ea4bfc8abd91.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/674b067316bd13b8.png)
 ```java
 package com.itheima.lock;
@@ -418,16 +470,23 @@ public class ReentrantLockTest {
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/eda204a6c6708e88.png)
 ### 如何排查死锁
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5eca9f75d28ef715.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2cfc8a972e60b7de.png)
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/edfc3860d03cc39c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/65276aec13f17368.png)
 ## 聊一下ConcurrentHashMap
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/17b681d927e98ed6.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b32ffeb5f21e492c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/e77f9b490cd4f6f8.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/29f6a71e32982c6b.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8a1fe42f307e5a6b.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/78f5bb2ed67746ce.png)
 ### ConcurrentHashMap 中 CAS 与 synchronized 的配合
 JDK 8 及以后，`ConcurrentHashMap` 不使用一把全局锁保护整张表，而是把 **CAS** 和 **synchronized** 结合起来，尽量缩小线程竞争的范围。
@@ -512,15 +571,22 @@ synchronized：负责保护非空桶的复杂修改
 
 ## 导致并发程序出现问题的原因是什么
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/781e9bb80bc8abf2.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f515f19a61429c72.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/64b8d8116980034d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2a8817d66fc2c24d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/22951258d7691aa1.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c6ce6466969c6016.png)
 # 线程池
 ## 线程池核心参数（线程池执行原理）
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2ab2889afd5a21d8.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/22c2a2788d8b5f53.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5dc820b6149035dc.png)
 ```java
 package com.itheima.threadpool;
@@ -656,16 +722,20 @@ public class TestThreadPoolExecutor {
 </table>
 ## 线程池中常见的阻塞队列
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3b95fbf0a2107197.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/81c800c8a332eb50.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0c740ee12994ce96.png)
 > 有界无界即队列的容量大小，LinkedBlockingQueue地产是链表，如果创建时不指定容量，那么默认为Integer.MaxValue，一般使用LinkedBlockingQueue也要指定容量<br>LinkedBlockingQueue首尾两个锁，操作效率高，二者都是先进先出
 ## 如何确定核心线程数
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f07d4aa382de65c1.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/99a68f2ca0510bbf.png)
 > N为计算机核心数，IO密集型任务对cpu占用不高，可以多设置点线程。<br>而Cpu密集型会高度占用Cpu，因此要避免线程切换带来的性能损耗。
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f782d33516e23ad4.png)
 ## 线程池的种类
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3a026229c05142b3.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d7de4f37c8c231d7.png)
 ```java
 package com.itheima.threadpool;
@@ -889,6 +959,7 @@ pool-1-thread-1, 结束：Sat Aug 22 14:25:53 CST 2026
 # 多线程使用场景
 ## es数据批量导入
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/bffc0b76ca82afb5.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b1e22a0f5ba8437d.png)
 ```java
 package com.itheima.application;
@@ -947,6 +1018,7 @@ public class CountDownLatchDemo {
 >
 	PS C:\\JavaProjects\\面试题目\\juc-project\>  & 'C:\\Software\\Jdks\\bin\\java.exe' '@C:\\Users\\Chenxin\\AppData\\Local\\Temp\\cp_bwbiqm81wdlttphwvn4t7m08j.argfile' 'com.itheima.application.CountDownLatchDemo'<br>Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8<br>Thread-0-begin...<br>Thread-1-begin...<br>main-waiting...<br>Thread-2-begin...<br>Thread-0-end...2<br>Thread-2-end...1<br>Thread-1-end...0<br>main-wait end...<br>每个线程给countdown-1,主线程要等countdonw=0的时候才会继续执行
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c31d9bd04f9025ca.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ff9e9ece41f7b94a.png)
 
 > 将countdownlatch的值设置为总页数，每次导入一页后将countdown-1，提交到线程池中执行任务
@@ -1394,18 +1466,22 @@ public class CDLApplication {
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ab2a98cbfdc63dbb.png)
 ## 如何控制某个方法允许并发访问线程的数量
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1a60d8a3ed86b0cf.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ef67d83c1396d4c3.png)
 
 > 信号量类似一个计数器
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2c991d05bae355c4.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6e2ac2e8ee600088.png)
 
 > 没有信号量会堵塞住等待
 
 ## ThreadLocal的理解
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3ce8c131a2835d81.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/608a1a509595c4a4.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/bec6f308314614d9.png)
 ```java
 package com.itheima.other;
@@ -1448,7 +1524,9 @@ t2-after remove : null
 > 每个都是使用自己的ThreadLocal
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0c328b6a32d897ff.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d9979dc719f642e1.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/bff6b65076609379.png)
 ### 为什么实际开发中需要 ThreadLocal？（核心价值）
 > `ThreadLocal` 最核心的实际价值不是为了并发计算，而是为了**「线程级上下文隐式传递（解耦参数）」**与**「非线程安全对象的无锁复用」**。可以把它理解为给当前线程绑一个**“随身小背包”**，在当前线程的任何方法层级中随时存取，避免方法参数层层污染。
@@ -1563,5 +1641,7 @@ public class OrderServiceImpl {
 
 ### ThreadLocal 内存泄漏与底层结构
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/bcf0b3c0c111aa8c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6781f6a7008c066e.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5dfc21c35c66355d.png)

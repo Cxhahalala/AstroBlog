@@ -119,6 +119,7 @@ Spring 事务失效常见有三种情况：一是**异常被自己捕获了**，
 Spring 事务失效常见场景主要有三种。第一，方法内部把异常自己捕获并处理了，没有继续抛出，这样 Spring 就感知不到异常，事务不会回滚。第二，抛出的是检查异常，Spring 默认只对运行时异常回滚，所以一般需要通过 `rollbackFor=Exception.class` 来指定回滚。第三，事务方法不是 public 的，由于 Spring 事务是基于 AOP 代理实现的，非 public 方法可能不会被代理，从而导致事务失效。
 # Spring的bean的生命周期？
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b68658ba72d828a3.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/cd48cbe54d37fb65.png)
 Spring中bean的生命周期包括以下步骤：
 1. 通过BeanDefinition获取bean的定义信息。
@@ -136,7 +137,9 @@ Spring中bean的生命周期包括以下步骤：
 4. 三级缓存：缓存ObjectFactory，用于创建bean对象。
 # 解决循环引用的流程
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b1444a7b7c3510cb.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a3b0d163c74de219.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/aeb683ed0b9c9aff.png)
 一级缓存无法解决循环依赖问题
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8ce37b5e03388218.png)
@@ -164,6 +167,7 @@ Spring 解决循环依赖主要依赖三级缓存机制。一级缓存存放的�
 构造方法出现循环依赖时，Spring 一般无法直接解决。因为构造器注入是在 Bean 实例化最开始执行的，创建 A 时就必须先得到 B，创建 B 时又必须先得到 A，而这时两个 Bean 都还没有完成实例化，所以 Spring 无法通过提前暴露对象来处理。三级缓存解决的是属性注入场景下的循环依赖，不能解决构造器循环依赖。常见的解决方式是改用 setter 或 `@Autowired` 属性注入，或者在其中一个依赖上加 `@Lazy`，通过延迟加载来打破循环依赖。
 # SpringMvc的执行流程
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/4f498fc829847a2c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/97b85584ad891dcb.png)
 背诵
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c6688e1acec9b1b5.png)
@@ -271,6 +275,7 @@ SpringBoot 常见方式是：
 ---
 # SpringBoot自动配置原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ff28e3c3a87b1ee6.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6c2f1af68e1d513d.png)
 Spring Boot的自动配置原理基于`@SpringBootApplication`注解，它封装了`@SpringBootConfiguration`、`@EnableAutoConfiguration`和`@ComponentScan`。`@EnableAutoConfiguration`是核心，它通过`@Import`导入配置选择器，读取`META-INF/spring.factories`文件中的类名，根据条件注解决定是否将配置类中的Bean导入到Spring容器中。
 # SpringBoot启动原理
@@ -427,6 +432,7 @@ MyBatis支持延迟加载，即在需要用到数据时才加载。可以通过�
 userMapper1和userMapper2是使用的一个SqlSession
 ## 二级缓存
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a11e64c14babb98e.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c5c11882996d8024.png)
 ## 答案版本
 MyBatis的一级缓存是基于`Perpetual\`\`Cache`的HashMap本地缓存，作用域为Session，默认开启。二级缓存需要单独开启，作用域为Namespace或mapper，默认也是采用`PerpetualCache`，HashMap存储。

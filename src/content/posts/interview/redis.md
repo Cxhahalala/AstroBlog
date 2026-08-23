@@ -14,7 +14,9 @@ draft: false
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/48368dad4cba1efb.png)
 比如有人得到你的请求路径，恶意伪造请求攻击你的数据库
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2da8a035f6bc2744.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/83bfebfb10b5e3de.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/96d8eadc15bd7cea.png)
 布隆过滤器可能会存在**误判**
 在布隆过滤器的具体实现中可以设置误判率，一般设置在百分之五以内
@@ -24,7 +26,9 @@ draft: false
 ## 缓存击穿
 ### 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/52c19e270fc64492.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6231a99b8de55daf.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5a4b6f4ba5c69598.png)
 ### 回答
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3cefc350d218bc05.png)
@@ -62,6 +66,7 @@ draft: false
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5b2f4398433d1c6e.png)
 **写锁**
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/89b05f35a031a97d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0aa273ecdc65c033.png)
 **注意获取的是同一把锁**
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/34a7d910154323b6.png)
@@ -76,12 +81,16 @@ draft: false
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/835a9b2ad08601f1.png)
 ## RDB
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/86c67e68864ffa2e.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/4c96eb94c4fb1594.png)
 linux中，进程无法直接操作物理内存，只能操作虚拟内存，通过页表将对虚拟内存的操作映射到物理内存中
 ## AOF
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/76001cf2b47ce4e2.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d4c517c45d617440.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/64f32c1bb40cee42.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c75b2e238372897e.png)
 # Redis过期策略
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ce9f4ed07459d502.png)
@@ -95,7 +104,9 @@ linux中，进程无法直接操作物理内存，只能操作虚拟内存，通
 # Redis淘汰策略
 ## 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c273650a05598813.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3260b499550f8e2c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3c78156db471a79c.png)
 ## 总结
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3e7a0bf4b128f267.png)
@@ -150,8 +161,11 @@ redisson的重试机制并不是一直循环等待
 ## 主从复制
 ### 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d13f26cd9f4e040c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/991bd8e2e595aeaa.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5131029328aeb9a3.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b334fcaf20ccfe44.png)
 ### 回答
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2377c8db8d087d20.png)
@@ -159,6 +173,7 @@ redisson的重试机制并不是一直循环等待
 ### 原理
 **主从模式一写多读，无法解决Redis的高可用问题**
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c857055d733b9cf9.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/56cd380c8ae3ee63.png)
 ### 脑裂问题
 **正常模式下，主从节点处于一个网络下，可以正常监控**
@@ -174,6 +189,7 @@ redisson的重试机制并不是一直循环等待
 ### 原理
 **有很多个master节点，每个master节点又附带一些slave节点**
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1a73692fb118cf0b.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/494535663ee02f56.png)
 **如果想要一些业务相关的key放到一个master，那么就可以对key设置一样的有效部分，例如右侧的aaa**
 ### 回答
@@ -190,6 +206,7 @@ redisson的重试机制并不是一直循环等待
 这种效率也不高
 ## IO多路复用
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/eb7e33036c84a8ba.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/aeeca513e4f2e31b.png)
 ## Redis网络模型
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8321521a12ae4ead.png)

@@ -17,6 +17,7 @@ draft: false
 # 如何优化慢索引
 ## 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/439306f4c950f13d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/28b7c798fd0e9111.png)
 如果出现useing index condition代表索引使用有优化空间
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0d599b4533b49b00.png)
@@ -28,6 +29,7 @@ draft: false
 这里是以二叉搜索树示例
 ## 索引的底层数据结构
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c38233161c0489ad.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/cb3065a33d3b81c3.png)
 磁盘读写代价低时因为非叶子节点只是存储指针，在便利的时候不需要每个节点都加载数据
 查询效率稳定，数据都寸在叶子节点上
@@ -37,7 +39,9 @@ draft: false
 # 聚集索引和非聚集索引
 ## 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1599efc907d4ba81.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/14bdc9af5f45b1a5.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/586a663447588bc6.png)
 简单来说，先通过二级索引拿到对应的主键，再通过主键获取真正的数据。相当于读了两次表，就叫做回表查询
 ## 回答
@@ -58,6 +62,7 @@ draft: false
 # 如何处理超大分页
 ## 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1f70b8e95203015d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/65b1b1f130cd4757.png)
 📝 本次对话核心总结：MySQL 深分页原理与优化
 核心认知纠偏
@@ -79,12 +84,15 @@ SELECT \* FROM tb_sku WHERE id \> \{last_id\} ORDER BY id LIMIT 10;
 LIMIT offset 的本质是沿链表逐条“数数”，子查询只是让“数数”时读的数据变小了，而游标分页才是真正把“数数”变成了“跳转”。
 ## 回答
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/9fe2cd27235e8125.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/641bb8b893caf986.png)
 # 创建索引的原则
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/bf8f8ff24a55e8ad.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/9ed0dce64c163ef6.png)
 截取一部分作为前缀索引
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f47fd73fd4ed253c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/26f4df386f7a1b02.png)
 ## 聚合索引相关
 ```yaml
@@ -150,12 +158,15 @@ EXPLAIN SELECT department, age, salary FROM employees WHERE department = '技术
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ea2d5a4a01f7cc1e.png)
 第二条status使用了范围查询，因此address失效，adress未命中索引
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/4cb5a7f1829a5c02.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/dc55920f3209c009.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/be380695673912e9.png)
 ## 回答
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/47046ca2b37925a0.png)
 # Sql优化
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/faa0d243119c4983.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d56a28ffe6509110.png)
 小表放外面，比如小表只有10行，大表都100行，那么只需要连接数据库3次，每次操作100次
 如果大表在外面，那么就要连接数据库100次，效率低
@@ -165,6 +176,7 @@ EXPLAIN SELECT department, age, salary FROM employees WHERE department = '技术
 分库分表一般发生在大的数据量中，后面补充
 # 什么是事务
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5ce62eeb02b0a7f0.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/83d382011e7d7ecf.png)
 ## 回答
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/14871b20b7904811.png)
@@ -173,7 +185,9 @@ EXPLAIN SELECT department, age, salary FROM employees WHERE department = '技术
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c1489d27093e263b.png)
 ##
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3ef5a5ae57121764.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/12a838758f37393d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/12b1e2656b0f9d7e.png)
 解决了不可重复读的问题后，读数据不存在，插入数据又失败，再读还是不存在，就出现了幻读问题
 ## 事务隔离性
@@ -192,33 +206,47 @@ EXPLAIN SELECT department, age, salary FROM employees WHERE department = '技术
 # Mvcc
 ## 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/af86d0cc352843e0.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ee76eb4389da50df.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a2907378d50f2dfb.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/071024a445ffdb99.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d119874d2ef28ddc.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0aadef2ed05c9ebe.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/78218db11373f8bf.png)
 这个不用记忆
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7632e52ed99ef84e.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/be9b2b814eb847b7.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2a42233fe7d035ce.png)
 ## 回答
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3ec0cce032f13ee1.png)
 # Mysql主从同步原理
 ## 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/42ee858eb34be05d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/330745b139fc2d8d.png)
 ## 回答
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/befb7c09b40098f9.png)
 # 分库分表
 ## 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/365f4a07a68a4266.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3300c1efde3ef51f.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/dfec87c11ab5137e.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/03bc9b0ef69de4ce.png)
 垂直分表不一定会把一个表分到两个数据库中
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/13c1e936eca1ec2d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2513da2d0d927494.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a5f9f55b81fbb903.png)
 ## 回答
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1577f0e51591355c.png)

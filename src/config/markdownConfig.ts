@@ -23,7 +23,7 @@ export interface MarkdownEnhancementConfig {
  */
 export const markdownConfig: MarkdownEnhancementConfig = {
 	autoImageGrid: {
-		enable: true,
+		enable: false,
 		minImages: 2,
 		maxColumns: 4,
 	},

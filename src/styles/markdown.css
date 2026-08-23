@@ -101,7 +101,15 @@
     }
   }
 
-  /* --- Standalone Markdown images --- */
+  /* --- Markdown images --- */
+  img:not(.image-grid__link img):not(.no-styling img) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem auto;
+    border-radius: var(--radius-large);
+  }
+
   .markdown-image-figure {
     margin: 1.5rem 0;
   }

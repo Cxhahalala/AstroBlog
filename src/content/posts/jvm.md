@@ -9,12 +9,17 @@ draft: false
 
 # 导学
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822192312681.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822192506147.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822192636671.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822194059258.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822194128811.png)
 # Jvm组成
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822194403986.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822195320673.png)
 如图所示，线程1从0行开始运行，当运行到20行后，cpu时间片分给线程二，那么线程二也从0行开始执行，当时间片再次分给1的时候，线程一会从20行继续执行。程序计数器就是让线程记住当前执行的行号。
 
@@ -38,8 +43,11 @@ draft: false
 
 ## 介绍Java的堆
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822200758615.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822200927323.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822201052441.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822201411464.png)
 
 ### 1. 什么是 Java 堆（Heap）？
@@ -79,8 +87,11 @@ Java 堆在结构上主要划分为：**年轻代（Young Generation）** 和 **
 
 ## 虚拟机栈
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822201613290.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822201809139.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822201834182.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822201856399.png)
 
 ### 1. 什么是虚拟机栈（JVM Stacks）？
@@ -274,6 +285,7 @@ public static void main(String[] args) {
 
 ## 方法区（Method Area）
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822203830650.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822204016572.png)
 
 ### 1. 什么是方法区？
@@ -347,6 +359,7 @@ MaxMetaspaceSize is too small.
 ### 4. 常量池 与 运行时常量池
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822205455307.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822205609119.png)
 
 #### (1) 常量池（Constant Pool，静态文件内）
@@ -374,7 +387,9 @@ MaxMetaspaceSize is too small.
 >    - 类加载后放入方法区的运行时常量池，将符号引用转化为物理内存真实地址。
 ## 直接内存
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822210511657.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822210615938.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822210948979.png)
 java无法直接读取系统内存，所以涉及两个缓冲区，效率较低
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260822211058578.png)
@@ -388,12 +403,16 @@ java无法直接读取系统内存，所以涉及两个缓冲区，效率较低
 ## 类加载器与双亲委派机制
 ### 什么是类加载器
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823133724534.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823133813235.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823134020205.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823134106644.png)
 > 一般我们自己写的代码都是由应用类加载器加载的
 ### 什么是双亲委派
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823134249161.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823134429976.png)
 > 对于我们自己编写的Student类，是从AppClassLoader开始加载，委托上一级即ExtClassLoader,再区委托上一级即BootStrap ClassLoder，而/jre/lib目录下没有这个Student类，所以AppClassLoader自己加载Student类
 
@@ -406,7 +425,9 @@ java无法直接读取系统内存，所以涉及两个缓冲区，效率较低
 
 ## 类装载的执行过程
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823135809304.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823135929131.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823140107558.png)
 
 ### 1. 加载（Loading）
@@ -420,6 +441,7 @@ java无法直接读取系统内存，所以涉及两个缓冲区，效率较低
 > - **堆中 `Class<Person>`（镜像代理）**：供 Java 代码（反射/API）访问元数据的入口，`static` 静态变量存放在此。
 > - **堆中 `张三 / 李四`（具体实例）**：存各自的属性数据（`name="张三"`）；**对象头中的类型指针直接指向元空间的 `InstanceKlass`**，调用方法时直接定位元空间执行指令。
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823140411556.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823140526808.png)
 > 类变量即static修饰的静态变量，b在准备阶段会赋默认值0,在初始化阶段才会赋值。而final修饰的c和d都是在准备阶段完成赋值，static和final修饰的引用类型，赋值也在初始化阶段完成
 
@@ -486,6 +508,7 @@ Animal 静态代码块...
 # 垃圾回收
 ## 什么时候可以被垃圾回收
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823151826147.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823151914793.png)
 ## 定位垃圾的两种方式
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823152055251.png)
@@ -495,6 +518,7 @@ Animal 静态代码块...
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823152434706.png)
 >将ab都指向null，此时没有任何引用指向堆中对象，但计数仍然不为0，导致无法被垃圾回收，出现了循环引用，可能会导致内存泄漏
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823152641428.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823152748788.png)
 >demo,a demo ,a都可以作为gc root
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823152927194.png)
@@ -512,14 +536,21 @@ Animal 静态代码块...
 
 ## Jvm分代回收
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823153704499.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823153949239.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823154110756.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823154228061.png)
 ## Jvm垃圾回收器
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823154316082.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823154345431.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823154438027.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823154522860.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823154714737.png)
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823154749779.png)
@@ -536,12 +567,19 @@ Animal 静态代码块...
 
 ## G1垃圾回收器
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823155304336.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823155409516.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823155535425.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823155559162.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823155721902.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823155738855.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823155831354.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823155947439.png)
 >优先回收存活数量少的old区意味着可以释放更多的内存
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823160059420.png)
@@ -556,6 +594,7 @@ Animal 静态代码块...
 
 ### 1. 四种引用特性速览
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823160916985.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823161059864.png)
 
 | 引用类型 | 回收时机 | 特点 / `get()` 表现 | 经典使用场景 | 引用队列的作用 |
@@ -569,6 +608,7 @@ Animal 静态代码块...
 
 ### 2. 引用队列（ReferenceQueue）与资源释放机制
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823161348824.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823161517993.png)
 
 > 💡 **核心辨析：不同引用配合队列释放的“资源”有何不同？**
@@ -588,7 +628,9 @@ Animal 静态代码块...
 # Jvm实践
 ## Jvm如何设置参数
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823164032373.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823164056325.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823164143422.png)
 >windows目录下后缀是bat
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823164305670.png)
@@ -610,11 +652,14 @@ https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html
 - 设置垃圾回收收集器
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823165004335.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823165058090.png)
 >减少栈内存，确实可以让线程变多，但如果方法，局部变量多， 可能会导致栈内存溢出的情况
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823165246143.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823165324953.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823165434161.png)
 ## JVM调优工具
 命令工具
@@ -631,21 +676,34 @@ https://www.oracle.com/java/technologies/javase/vmoptions-jsp.html
 - jconsole用于对jvm的内存，线程，类的监控
 - VisualVM 能够监控线程，内存情况
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823165745392.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170026267.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170122255.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170227300.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170227300.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170414135.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170433576.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170452552.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170532839.png)
 
 ## Java内存泄漏排查思路
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170612606.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170701825.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823170827634.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823171042385.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823171109339.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823171132212.png)
 java内存泄露的排查思路？
 内存泄漏通常是指堆内存，通常是指一些大对象不被回收的情况
@@ -655,8 +713,11 @@ java内存泄露的排查思路？
 4、找到对应的代码，通过阅读上下文的情况，进行修复即可
 ## Cpu飙高排查思路
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823171419025.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823171719407.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823171816155.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/20260823171854914.png)
 CPU飙高排查方案与思路？
 1.使用top命令查看占用cpu的情况

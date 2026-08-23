@@ -12,11 +12,17 @@ draft: false
 # 复杂度
 ## 时间复杂度
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/11bae08045e0205d.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ef4fa4ddec3e353a.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5ef9ded14cb3d232.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d844c2f0c124bfde.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7aa9a5bcc0c0fffe.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/fb8b78d041f20cc1.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6b5bc67db7db26ac.png)
 ## 空间复杂度
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8521957cbdb04ec0.png)
@@ -26,11 +32,17 @@ draft: false
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/40c603ea617a99a8.png)
 ## 数组
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2bfb96474650976e.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ea92183b680788ce.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/daf770f2c4da88ae.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f3c5c480a9b7ea6b.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/31e4ab2f5f3a70ce.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d91507a4998e60ad.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/e4901cee119cf7f1.png)
 ## ArrayList源码分析
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6f8d77c7cbd95fb8.png)
@@ -40,6 +52,7 @@ draft: false
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2961b422bcc590b8.png)
 ### 添加数据
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/975a5d9c1498cdfa.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1435805151182422.png)
 **第2到10次添加数据都不会扩容**
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8e7c943131549692.png)
@@ -51,61 +64,85 @@ draft: false
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/db3a7129856b9859.png)
 ### 如何实现List和数组的转换
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b74d953c799dc472.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/21fbf8458707e65e.png)
 asList方法只涉及了对象的引用，不涉及对象的创建，因此修改数组也会影响列表
 toArray方法则是复制一份，修改List不会影响数组
 ### ArrayList与LinkedList区别
 #### 单向链表
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ed37cee98a21c9d2.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8fc0d0d9a0442587.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/295c90a81cae24b0.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b2ac874850cd4990.png)
 #### 双向链表
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1ff34583e5164b45.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d20d4bacd8d49e45.png)
 #### 链表对比
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a7f48cf24751c963.png)
 #### 回答
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b9996dd839f87fa9.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7e472475de390293.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ff5371b90f2a3651.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/58af174900ee650c.png)
 # Map
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8b4f55d2a22f84c8.png)
 ## 二叉树
 ### 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0b04556600549862.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d0c1c5a9493a8eee.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/05b98378e223be35.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2bfc25242d63338f.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/31ba794c63f83d4c.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/71326450c391d327.png)
 ### 总结
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/304440a31ac9ab0a.png)
 ## 红黑树
 ### 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/c24666ad4a57bd8f.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/366dcc1dbe9bb958.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6b5eb48732d1b7b2.png)
 ### 总结
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/9e455f0cee09ff9f.png)
 ## 散列表
 ### 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/75e42222bdc1035f.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/246f6536d0f94b1a.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/4449cfe7b471c1d6.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1349ebc2cc0b5679.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b7acdfded40047eb.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/cff676756812fcbc.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/0fa5637dc057c128.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f348d09fae75b650.png)
 **链表太长会导致查询效率变为O(n)，通过将链表转换为红黑树解决**
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/46524a82b7000d48.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3349d98eda70004c.png)
 ### 总结
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/43334db3e8d0072d.png)
 ## 说一下HashMap的实现原理<br>### 原理
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8df034798b8617e5.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2e6aee585d51434f.png)
 **追问：jdk1.8和jdk1.7的hashmap实现有什么区别**
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/6be9c3e065d04f3a.png)
@@ -115,9 +152,11 @@ toArray方法则是复制一份，修改List不会影响数组
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/729d99eda4c41e6e.png)
 ### 源码分析
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8b2d1eb326e4db38.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8ecfd33e4c8fcb56.png)
 ### 添加数据流程图
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/b8ecbeb72a547db8.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8a01c94f3d686b8e.png)
 ### 源码
 ```yaml
@@ -204,10 +243,15 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8ce7448154c5b7a7.png)
 ## HashMap寻址算法
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f7a7952c53f13d50.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/1813af16236c2a82.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/36c5dcebe6e9df04.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/102aa163fea065ea.png)
 ## HashMap死循环问题
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/05faa6407cbf52a4.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/3b302962d3579ae6.png)
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/973bef4b1fd3e314.png)
