@@ -3,7 +3,7 @@ title: "JVM 面试题核心汇总与实战解析"
 published: 2026-08-23
 description: "全面整理 JVM 核心面试题：JVM 内存组成（堆、栈、方法区/元空间）、类加载机制与双亲委派、垃圾回收算法与 GC 收集器、JVM 调优参数与 OOM/CPU 飙高排查思路。"
 tags: ["Java", "JVM", "面试"]
-category: "Java"
+category: "面试"
 draft: false
 ---
 
