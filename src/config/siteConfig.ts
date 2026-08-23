@@ -36,8 +36,8 @@ export const siteConfig: SiteConfig = {
     mode: "text-icon",
     // 顶栏标题文本
     text: "xinlog",
-    // 顶栏标题图标路径，默认使用 public/assets/home/home.webp
-    icon: "assets/home/home.webp",
+    // 顶栏标题图标路径，留空则仅显示文字
+    icon: "",
     // 网站Logo图片路径
     logo: "assets/home/default-logo.webp",
   },

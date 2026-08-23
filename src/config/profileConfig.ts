@@ -2,7 +2,7 @@ import type { ProfileConfig } from "../types/config";
 
 // 个人资料配置
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.webp", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+	avatar: "https://cxhahalala.github.io/Background/%E5%A4%B4%E5%83%8F1.png",
 	name: "まつざか ゆき",
 	bio: "学习只为装逼",
 	typewriter: {
@@ -23,7 +23,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "GitHub",
 			icon: "fa7-brands:github",
-			url: "https://github.com/matsuzaka-yuki",
+			url: "https://github.com/Cxhahalala",
 		},
 		{
 			name: "Codeberg",
