@@ -29,7 +29,9 @@ graph LR
 **需求描述：**
 需求：设计一个咖啡店点餐系统。
 设计一个咖啡类（Coffee），并定义其两个子类（美式咖啡【AmericanCoffee】和拿铁咖啡【LatteCoffee】）；再设计一个咖啡店类（CoffeeStore），咖啡店具有点咖啡的功能。
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7b8b6a043c4d9b6c.png)
+
 ```java
 
 /**
@@ -153,13 +155,20 @@ public class CoffeeStore {
 }
 
 ```
-<callout icon="💡" color="gray_bg">
-	在咖啡店代码中，我们需要什么咖啡都是直接new新的对象，如果新添咖啡，则要不断的修改咖啡店代码，代码耦合严重，违背了开闭原则：扩展开放，对修改关闭
-</callout>
-工厂设计模式：解耦
+> 💡 **核心背景**：在咖啡店代码中，我们需要什么咖啡都是直接new新的对象，如果新添咖啡，则要不断的修改咖啡店代码，代码耦合严重，违背了开闭原则：扩展开放，对修改关闭
+
+**工厂设计模式核心目标：解耦**
+
 ## 简单工厂模式
-**简单工厂模式**<br>简单工厂包含如下角色：<br>● 抽象产品：定义了产品的规范，描述了产品的主要特性和功能。<br>● 具体产品：实现或者继承抽象产品的子类<br>● 具体工厂：提供了创建产品的方法，调用者通过该方法来获取产品。
+**简单工厂模式**
+
+简单工厂包含如下角色：
+- 抽象产品：定义了产品的规范，描述了产品的主要特性和功能。
+- 具体产品：实现或者继承抽象产品的子类
+- 具体工厂：提供了创建产品的方法，调用者通过该方法来获取产品。
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f83af828bd97c7c1.png)
+
 ```java
 
 public class SimpleCoffeeFactory {
@@ -188,9 +197,18 @@ public static Coffee orderCoffee(String type) {
     }
 ```
 > Coffee与创建对象解耦，但与此同时又产生了新的问题，工厂类与创建对象又耦合了，CoffeeStrore与工厂的耦合，如果要添加新的coffee，依旧要修改工厂方法，耦合依旧严重
+
 ## 工厂方法模式
-**工厂方法模式**<br>工厂方法模式的主要角色：<br>● 抽象工厂（AbstractFactory）：提供了创建产品的接口，调用者通过它访问具体工厂的工厂方法来创建产品。<br>● 具体工厂（ConcreteFactory）：主要是实现抽象工厂中的抽象方法，完成具体产品的创建。<br>● 抽象产品（Product）：定义了产品的规范，描述了产品的主要特性和功能。<br>● 具体产品（ConcreteProduct)：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。
+**工厂方法模式**
+
+工厂方法模式的主要角色：
+- 抽象工厂（AbstractFactory）：提供了创建产品的接口，调用者通过它访问具体工厂的工厂方法来创建产品。
+- 具体工厂（ConcreteFactory）：主要是实现抽象工厂中的抽象方法，完成具体产品的创建。
+- 抽象产品（Product）：定义了产品的规范，描述了产品的主要特性和功能。
+- 具体产品（ConcreteProduct)：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/fc3e7ec80545950c.png)
+
 > 具体的工厂创建具体的产品
 ```java
 /**
@@ -293,7 +311,14 @@ graph LR
     F2 --> C2
     F3 --> C3
 ```
-优点：<br>● 用户只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程；<br>● 在系统增加新的产品时只需要添加具体产品类和对应的具体工厂类，无须对原工厂进行任何修改，满足开闭原则；缺点：<br>● 每增加一个产品就要增加一个具体产品类和一个对应的具体工厂类，这增加了系统的复杂度。
+优点：
+- 用户只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程；
+- 在系统增加新的产品时只需要添加具体产品类和对应的具体工厂类，无须对原工厂进行任何修改，满足开闭原则；
+
+**缺点：**
+
+- 每增加一个产品就要增加一个具体产品类和一个对应的具体工厂类，这增加了系统的复杂度。
+
 ## 抽象工厂设计模式
 **抽象工厂模式**
 工厂方法模式只考虑生产同等级的产品，抽象工厂可以处理多等级产品的生产
@@ -313,7 +338,9 @@ quadrantChart
     "华为电脑": [0.25, 0.25]
     "华为手机": [0.75, 0.25]
 ```
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/212f5a003b318d3f.png)
+
 ```mermaid
 flowchart LR
     Shop["咖啡店"] --> Factory["产品工厂"]
@@ -376,6 +403,7 @@ flowchart TD
 - **环境（Context）类**：持有一个策略类的引用，最终给客户端调用。
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/cba24db79f3238b4.png)
+
 > 感觉和工厂模式很像
 **优点：**
 - 策略类之间可以自由切换
@@ -394,6 +422,7 @@ flowchart TD
 - QQ登录
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2dc37ffa4c8476a9.png)
+
 使用If-else写法进行登录
 ```java
 if (loginReq.getType().equals("account")) {
@@ -423,7 +452,7 @@ if (loginReq.getType().equals("account")) {
 }
 ```
 是逐层判断哪种登录方式然后执行相关的登录逻辑
-\*\*使用策略模式+工厂模式优化\*\*
+**使用策略模式+工厂模式优化**
 首先定义一个抽象策略接口，而具体的登录方式则实现此接口
 ```java
 /**
@@ -582,7 +611,9 @@ public class UserService {
 
 ```
 > 如果要增登录模式呢？只需要在配置文件新增，并新建一个登陆策略类即可
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/2230bf15d5df422e.png)
+
 **举一反三**
 - 订单的支付策略（支付宝、微信、银行卡...）
 - 解析不同类型excel（xls格式、xlsx格式）
@@ -621,6 +652,7 @@ flowchart LR
 - 客户类（Client）角色：创建处理链，并向链头的具体处理者对象提交请求，它不关心处理细节和请求的传递过程。
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/a9eae1144b437319.png)
+
 ```java
 /**
  * 抽象处理者
