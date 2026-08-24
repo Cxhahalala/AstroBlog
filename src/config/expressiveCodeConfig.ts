@@ -19,7 +19,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 		enable: true,
 		lineThreshold: 20,
 		previewLines: 10,
-		defaultCollapsed: true,
+		defaultCollapsed: false,
 	},
 	codeGroup: {
 		enable: true,
