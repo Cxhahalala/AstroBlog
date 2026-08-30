@@ -4,7 +4,7 @@ import type { ProfileConfig } from "../types/config";
 export const profileConfig: ProfileConfig = {
 	avatar: "https://cxhahalala.github.io/Background/%E5%A4%B4%E5%83%8F1.png",
 	name: "まつざか ゆき",
-	bio: "学习只为装逼",
+	bio: "痛苦不可避免，磨难可以选择",
 	typewriter: {
 		enable: true, // 启用个人简介打字机效果
 		speed: 80, // 打字速度（毫秒）
