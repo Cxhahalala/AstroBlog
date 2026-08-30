@@ -3,8 +3,8 @@ import type { ProfileConfig } from "../types/config";
 // 个人资料配置
 export const profileConfig: ProfileConfig = {
 	avatar: "https://cxhahalala.github.io/Background/%E5%A4%B4%E5%83%8F1.png",
-	name: "まつざか ゆき",
-	bio: "痛苦不可避免，磨难可以选择",
+	name: "xinRose",
+	bio: "Pain is inevitable. Suffering is optional.",
 	typewriter: {
 		enable: true, // 启用个人简介打字机效果
 		speed: 80, // 打字速度（毫秒）
