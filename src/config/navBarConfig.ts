@@ -141,7 +141,7 @@ export const navBarConfig: NavBarConfig = {
 			children: [
 				{
 					name: "GitHub",
-					url: "https://github.com/LyraVoid/Mizuki",
+					url: "https://github.com/Cxhahalala",
 					external: true, // 外部链接，新标签页打开
 					icon: "fa7-brands:github",
 				},
@@ -150,12 +150,6 @@ export const navBarConfig: NavBarConfig = {
 					url: "https://space.bilibili.com/701864046",
 					external: true,
 					icon: "fa7-brands:bilibili",
-				},
-				{
-					name: "Gitee",
-					url: "https://gitee.com/matsuzakayuki/Mizuki",
-					external: true,
-					icon: "mdi:git",
 				},
 			],
 		},
@@ -166,6 +160,11 @@ export const navBarConfig: NavBarConfig = {
 			url: "/content/",
 			icon: "material-symbols:person",
 			children: [
+				{
+					name: "简历",
+					url: "/resume/",
+					icon: "material-symbols:description",
+				},
 				{
 					name: "Anime",
 					url: "/anime/",
