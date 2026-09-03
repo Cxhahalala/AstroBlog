@@ -158,8 +158,12 @@ SELECT * FROM tb_sku WHERE id > 9000000 ORDER BY id LIMIT 10;
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f47fd73fd4ed253c.png)
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/26f4df386f7a1b02.png)
-## 聚合索引相关
-```yaml
+## 联合索引与最左前缀原则
+
+### 1. 什么是联合索引？
+联合索引（又称复合索引、组合索引）是指在数据表的**多个字段上共同建立的单棵二级索引树**。
+
+```sql
 CREATE TABLE employees (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
@@ -167,77 +171,193 @@ CREATE TABLE employees (
     department VARCHAR(50),
     salary DECIMAL(10,2)
 );
+
 -- 创建联合索引：(department, age, salary)
 CREATE INDEX idx_dept_age_salary ON employees(department, age, salary);
 ```
-**避免回表查询**
-```yaml
-EXPLAIN SELECT department, age, salary FROM employees WHERE department = '技术部' AND age > 25;
+
+#### 底层存储结构与物理排序原理
+- 联合索引本质依然是一棵 B+ 树，其叶子节点存储的是 `(department, age, salary, 主键id)`。
+- **物理排序规则**：
+  1. **全局优先按第 1 列（department）排序**；
+  2. 只有在第 1 列值完全相同的情况下，内部记录才按第 2 列（age）排序；
+  3. 只有在前 2 列的值均完全相同的情况下，才按第 3 列（salary）排序。
+
+> 💡 **核心本质**：除了最左侧第一列之外，后面的所有列在整棵 B+ 树的全局视角下**并不是绝对有序的，只有在左侧所有前导列都固定的局部范围内才是有序的**。这就是“最左前缀匹配原则”不可撼动的物理根源。
+
+---
+
+### 2. 最左前缀匹配规则速查表
+
+基于联合索引 `idx_dept_age_salary(department, age, salary)`：
+
+| 查询条件 / 排序场景 | 能否走索引 | 索引生效分析与底层机理 |
+| :--- | :---: | :--- |
+| `WHERE department = '技术部'` | ✅ 完全命中 | 命中第 1 列，可直接利用 B+ 树快速二分定位 |
+| `WHERE department = '技术部' AND age = 25` | ✅ 完全命中 | 命中前 2 列，连续有效，检索范围进一步收窄 |
+| `WHERE department = '技术部' AND age = 25 AND salary > 5000` | ✅ 完全命中 | 命中全部 3 列（前两列精准等值匹配，第 3 列范围过滤） |
+| `WHERE age = 25` | ❌ 索引失效 | **跳过了最左前导列**。未锁定第 1 列时，age 在整棵树上全局无序，无法走树二分查找，退化为全表扫描 |
+| `WHERE department = '技术部' AND salary > 5000` | ⚠️ 部分生效 | 仅第 1 列用于 B+ 树定位；中间断了 `age`，`salary` 无法用于索引查找定位（但在 MySQL 5.6+ 中会触发 **ICP 索引下推** 在引擎层提前过滤） |
+| `WHERE department = '技术部' AND age > 25 AND salary = 8000` | ⚠️ 部分生效 | 命中前 2 列；`age` 出现范围查询，其右侧的 `salary` 无法继续用于索引查找定位（`key_len` 仅计算前两列） |
+| `WHERE department = '技术部' ORDER BY age, salary` | ✅ 消除排序 | 过滤 department 后局部范围内的 age、salary 天然有序，**直接避免 `Using filesort`** |
+
+---
+
+### 3. 联合索引高级实战特性
+
+#### (1) 覆盖索引避免回表
+当查询所需的所有字段均包含在联合索引或主键中时，MySQL 直接在二级索引树上读取数据并返回，彻底免去回表开销：
+
+```sql
+-- 覆盖索引：department, age, salary 均在索引叶子节点中，Extra 显示 Using index
+EXPLAIN SELECT department, age, salary 
+FROM employees 
+WHERE department = '技术部' AND age > 25;
 ```
-**最左侧原则**
-<table header-row="true">
-<tr>
-<td>**查询条件**</td>
-<td>**能否走索引**</td>
-<td>**说明**</td>
-</tr>
-<tr>
-<td>`**WHERE department = 'X'**`</td>
-<td>✅</td>
-<td>**用了第1列**</td>
-</tr>
-<tr>
-<td>`**WHERE department = 'X' AND age = 25**`</td>
-<td>✅</td>
-<td>**用了前2列**</td>
-</tr>
-<tr>
-<td>`**WHERE department = 'X' AND age = 25 AND salary > 5000**`</td>
-<td>✅</td>
-<td>**3列全用**</td>
-</tr>
-<tr>
-<td>`**WHERE age = 25**`</td>
-<td>❌</td>
-<td>**跳过了第1列，索引失效**</td>
-</tr>
-<tr>
-<td>`**WHERE department = 'X' AND salary > 5000**`</td>
-<td>⚠️\*\* 部分\*\*</td>
-<td>**只用 department，salary 因中间断了 age 而无法用于索引查找（但可能用于索引过滤）**</td>
-</tr>
-<tr>
-<td>`**WHERE department = 'X' ORDER BY age**`</td>
-<td>✅</td>
-<td>**排序也能利用索引有序性，避免 filesort**</td>
-</tr>
-</table>
+
+#### (2) 索引下推（ICP, Index Condition Pushdown）
+- **触发场景**：`WHERE department = '技术部' AND salary > 5000`（中间跳过了 `age` 列）。
+- **优化前（MySQL 5.6 之前）**：存储引擎只利用 `department = '技术部'` 找到所有主键 ID，全部进行回表读出整行数据，再由 Server 层根据 `salary > 5000` 逐行过滤。
+- **优化后（MySQL 5.6+ 默认开启 ICP）**：存储引擎在遍历二级索引时，直接读取联合索引中自带的 `salary` 字段进行条件过滤，**只有满足 `salary > 5000` 的记录才进行回表**，极大降低无效回表次数。在 EXPLAIN 的 Extra 列会显示 `Using index condition`。
+
 ## 回答
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/678beebc20043ade.png)
-# 索引失效
+
+---
+
+# 索引失效的六大经典场景与底层剖析
+
+在日常开发与面试中，索引失效通常并非“完全不走索引”，而是由于书写不当导致索引无法被高效利用。以下为 6 大高频失效场景及底层成因：
+
+### 1. 违背最左前缀法则
+
+在联合索引中，如果跳过了最左侧前导列，整棵 B+ 树将无法进行二分寻道，导致索引彻底失效；如果跳过了中间某一列，则只有断层左侧的列能够用于索引查找。
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/09cd9b4f99b10417.png)
-这三个是按照索引顺序来的，所以可以命中索引
+
+> **解析**：对于联合索引 `(name, status, address)`，全值匹配查询时，三个字段按序连续命中，`key_len` 达到最大值，索引利用率最高。
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/7333f449bce17cd9.png)
-第二条跳过了一条，只有最左侧索引生效，所以key_len与只使用name的时候一样
+
+> **解析**：查询条件跳过了中间的 `status`（如 `WHERE name = 'X' AND address = 'Y'`），只有最左侧的 `name` 能够用于索引查找，`key_len` 仅对应 `name` 列的长度。
+
+---
+
+### 2. 范围查询导致右侧列失效
+
+在联合索引中，一旦某一列使用了范围查询（`>`、`<`、`BETWEEN` 等），该列右侧的所有索引列将无法继续用于树定位查找。
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/ea2d5a4a01f7cc1e.png)
-第二条status使用了范围查询，因此address失效，adress未命中索引
+
+- **底层原因**：当 `status > '1'` 筛选出一个多节点范围后，在这一范围内不同记录的 `address` 是离散无序的，因此 B+ 树无法继续利用 `address` 进行精确区间收窄。
+- **💡 规避技巧**：在业务逻辑允许的情况下，尽量使用 `>=`、`<=` 替代纯粹的 `>`、`<`；或在建立联合索引时，**将范围查询列放置在联合索引的最右侧**。
+
+---
+
+### 3. 在索引列上进行运算或函数操作
+
+如果在查询条件的索引列上进行了数学运算、字符串截断或系统函数调用，索引将完全失效，退化为全表扫描。
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/4cb5a7f1829a5c02.png)
+
+- **典型错误**：
+  ```sql
+  -- 错误：在索引列上调用函数导致失效
+  SELECT * FROM tb_seller WHERE SUBSTRING(phone, 10, 2) = '15';
+  
+  -- 错误：在索引列上进行数学运算导致失效
+  SELECT * FROM tb_sku WHERE id + 1 = 100;
+  ```
+- **底层原因**：B+ 树索引中存储的是字段的**原始原始值**，而不是计算或转换后的衍生值。MySQL 无法反向逆推函数结果在树上的位置，只能逐行扫描全表。
+
+---
+
+### 4. 隐式类型转换（字符串不加单引号）
+
+数据类型不匹配会触发 MySQL 底层的隐式类型转换，本质等同于在索引列上隐式包裹了 `CAST()` 函数。
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/dc55920f3209c009.png)
 
+- **典型场景**：`phone` 字段定义为字符串类型 `VARCHAR`：
+  ```sql
+  -- 走索引：正常传递带单引号的字符串
+  SELECT * FROM tb_seller WHERE phone = '13800000000';
+  
+  -- 索引失效：未加单引号，传入整型数字
+  SELECT * FROM tb_seller WHERE phone = 13800000000;
+  ```
+- **底层原因**：MySQL 规则规定，当字符串与数值进行比较时，会将**字符串转为浮点数/数值**进行比较。相当于执行了 `WHERE CAST(phone AS DOUBLE) = 13800000000`，触发了函数计算导致索引失效。
+
+---
+
+### 5. 头部模糊查询（LIKE 以 % 开头）
+
+使用 `LIKE` 进行通配符匹配时，通配符的位置决定了是否能够利用索引：
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/be380695673912e9.png)
-## 回答
+
+- **失效场景（以 % 开头）**：`LIKE '%北京'` 或 `LIKE '%北京%'`。因为字符串的前缀完全未知，B+ 树无法确定字典序的起点，必须全表扫描。
+- **生效场景（以 % 结尾）**：`LIKE '北京%'`。前缀字符明确，MySQL 可以利用 B+ 树快速定位到以“北京”开头的最小边界和最大边界，走高效的索引范围扫描（Index Range Scan）。
+- **💡 优化方案**：若业务必须使用 `%word%` 全模糊查询，尽量使用**覆盖索引**（只查询索引包含的字段，走索引全扫描 Index Scan 比走表全扫描 Table Scan 快得多），或引入专门的全文检索引擎（如 Elasticsearch）。
+
+---
+
+### 6. OR 连接条件存在无索引列 / 优化器成本预估（CBO）
+
+1. **OR 条件未全部建立索引**：若 `WHERE a = 1 OR b = 2`，即使 `a` 有索引，但只要 `b` 没建索引，因为 `b` 无论如何都要全表扫描，优化器便会放弃使用 `a` 的索引，直接执行全表扫描。
+2. **优化器成本预估放弃走索引**：MySQL 优化器（CBO）会预估走索引与全表扫描的成本代价。当查询条件筛选出的记录占全表比例较大时（例如查询结果超过全表的 20%~30%），优化器评估“在二级索引中频繁离散寻道并进行海量随机回表”的开销远高于“直接顺序扫描全表”，从而主动放弃使用索引。
+
+---
+
+## 总结与面试回答
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/47046ca2b37925a0.png)
+
+> **💡 面试高分记忆口诀**：
+>
+> **“模型数空运，最左前缀别断层；范围之后列失效，函数运算全表行；字符加引号免转换，Like 百分莫打头；OR 两侧皆需索，成本过高优化放。”**
 # Sql优化
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/faa0d243119c4983.png)
 
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/d56a28ffe6509110.png)
-小表放外面，比如小表只有10行，大表都100行，那么只需要连接数据库3次，每次操作100次
-如果大表在外面，那么就要连接数据库100次，效率低
+
+### 大白话理解：为什么要「小表驱动大表」？
+
+你可以把表连接（JOIN）直接理解为代码里的 **双层 `for` 循环**（这里的“次数”指的就是 MySQL 内部双层嵌套循环的匹配次数）：
+
+```java
+// 小表驱动大表：比如小表 10 行，大表 1000 万行（大表关联字段建了索引）
+for (小表的每一行 : 小表) {  // 外层循环：只跑 10 次！
+    // 拿小表的关联值，去大表里利用索引查一次（走索引树极快，瞬间查出）
+}
+```
+
+- **小表放外层（小表驱动大表）**：
+  - 外层循环只跑 **10 次**，去大表里查 10 次就完事了，极其省力！
+- **大表放外层（大表驱动小表）**：
+  - 外层循环要跑 **1000 万次**！哪怕内层查得再快，光是外层空转 1000 万次，CPU 和内存也会直接吃不消。
+
+所以记住大白话原则：**哪张表的数据少，谁就放到外层当驱动表；外层循环次数越少，整体效率越高！**
+
+---
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/8d067b6c9a7198a3.png)
+
+### 大白话总结：最管用的几条 SQL 优化经验
+
+1. **避免 `SELECT *`**：需要哪些字段就查哪些字段，尽量凑成覆盖索引，少回表或者不回表；
+2. **小表驱动大表**：多表关联查询时，过滤后数据量小的表作为外层驱动表；
+3. **批量操作代替单条循环**：多条插入用 `INSERT INTO 表 VALUES (...), (...)` 一次搞定，减少网络往返开销；
+4. **优先用 `UNION ALL`**：如果业务不需要去重，直接用 `UNION ALL`，避免数据库额外做耗时费力的排序去重；
+5. **深分页用延迟关联或游标**：大分页别硬查，用子查询只查 ID 走覆盖索引，或者用 `WHERE id > last_id` 精准跳转。
+
 ## 回答
+
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/f6c171dc63f8cbda.png)
-分库分表一般发生在大的数据量中，后面补充
+
+> 💡 **补充说明**：分库分表一般发生在单表数据量千万级以上、单机硬件达到瓶颈的大并发场景中。
 # 什么是事务
 ![](https://cdn.jsdelivr.net/gh/Cxhahalala/hexo-images-1@main/images/5ce62eeb02b0a7f0.png)
 
